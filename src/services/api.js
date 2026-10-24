@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const API_URL = 'https://hack-odisha.onrender.com/api';
+export const API_URL = process.env.REACT_APP_API_URL || 'https://hack-odisha.onrender.com/api';
 
 // Move the mockDonations array to the top of the file
 const mockDonations = [

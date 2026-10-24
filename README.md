@@ -75,6 +75,18 @@ cd server
 npm run dev
 ```
 
+The frontend reads its backend URL from `REACT_APP_API_URL`. For local development,
+`.env.local` should contain:
+```
+REACT_APP_API_URL=http://localhost:5000/api
+```
+
+For a deployed frontend, set `REACT_APP_API_URL` in the hosting provider's environment
+variables, for example:
+```
+REACT_APP_API_URL=https://hack-odisha.onrender.com/api
+```
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.

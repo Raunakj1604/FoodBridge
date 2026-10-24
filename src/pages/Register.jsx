@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { authService } from '../services/api';
+import { API_URL, authService } from '../services/api';
 
 const Register = () => {
   const [step, setStep] = useState(1);
@@ -143,7 +143,7 @@ const Register = () => {
         formData.append('verificationNumber', registrationData.verificationNumber);
         formData.append('verificationExpiry', registrationData.verificationExpiry);
 
-        await fetch(`${process.env.REACT_APP_API_URL}/api/verification/submit`, {
+        await fetch(`${API_URL}/verification/submit`, {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${response.token}`

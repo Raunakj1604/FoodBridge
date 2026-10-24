@@ -9,6 +9,12 @@ router.post('/register', async (req, res) => {
   try {
     console.log('Received registration request:', req.body);
 
+    if (mongoose.connection.readyState !== 1) {
+      return res.status(503).json({
+        message: 'Database is unavailable. Check the backend MongoDB connection.'
+      });
+    }
+
     // Check if user already exists
     const existingUser = await User.findOne({ email: req.body.email });
     if (existingUser) {
@@ -70,6 +76,9 @@ router.post('/register', async (req, res) => {
       return res.status(400).json({ 
         message: Object.values(error.errors).map(err => err.message).join(', ')
       });
+    }
+    if (error.code === 11000) {
+      return res.status(400).json({ message: 'Email already registered' });
     }
     res.status(500).json({ message: 'Error registering user' });
   }

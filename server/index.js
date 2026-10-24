@@ -6,10 +6,7 @@ require('dotenv').config();
 
 const app = express();
 
-// Log environment variables (for debugging)
-console.log('MongoDB URI:', process.env.MONGODB_URI);
-console.log('JWT Secret:', process.env.JWT_SECRET);
-console.log('Port:', process.env.PORT);
+console.log('Port:', process.env.PORT || 5000);
 
 // CORS configuration
 const frontendEnv = process.env.FRONTEND_URL;
